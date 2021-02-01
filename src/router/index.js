@@ -56,106 +56,106 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/commodity',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
+    redirect: '/commodity/index',
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        component: () => import('@/views/commodity/index'),
+        name: 'Commodity',
+        meta: { title: '商品管理', icon: 'example', noCache: true }
       }
     ]
   },
-
   {
-    path: '/nested',
+    path: '/invoice',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
+    redirect: '/invoice/index',
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'index',
+        component: () => import('@/views/invoice/index'),
+        name: 'Invoice',
+        meta: { title: '发票管理', icon: 'eye', noCache: true }
       }
     ]
   },
-
   {
-    path: 'external-link',
+    path: '/inventory',
     component: Layout,
+    redirect: '/inventory/index',
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'index',
+        component: () => import('@/views/inventory/index'),
+        name: 'Inventory',
+        meta: { title: '库存管理', icon: 'form', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/supplier',
+    component: Layout,
+    redirect: '/supplier/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/supplier/index'),
+        name: 'Supplier',
+        meta: { title: '供应商管理', icon: 'link', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/order/index'),
+        name: 'Order',
+        meta: { title: '订单管理', icon: 'nested', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/purchase',
+    component: Layout,
+    redirect: '/purchase/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/purchase/index'),
+        name: 'Purchase',
+        meta: { title: '采购管理', icon: 'table', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '业务员管理', icon: 'user', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/sales',
+    component: Layout,
+    redirect: '/sales/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/sales/index'),
+        name: 'Sales',
+        meta: { title: '退货管理', icon: 'tree', noCache: true }
       }
     ]
   },

@@ -15,6 +15,15 @@ export function isExternal(path) {
  * @returns {Boolean}
  */
 export function validUsername(str) {
-  const valid_map = ['admin', 'editor']
+  /* var valid_map = []
+  axios({
+    url: 'http://localhost:7001/queryAllName',
+    method: 'get'
+  }).then(res => {
+    console.log(res.data)
+    valid_map = res.data
+    console.log(valid_map)
+  })*/
+  const valid_map = ['admin', 'account']
   return valid_map.indexOf(str.trim()) >= 0
 }

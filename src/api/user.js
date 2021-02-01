@@ -2,15 +2,15 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
+    url: 'http://localhost:7001/load',
+    method: 'get',
+    params:{...data}
   })
 }
 
 export function getInfo(token) {
   return request({
-    url: '/vue-admin-template/user/info',
+    url: 'http://localhost:7001/getUserInfo',
     method: 'get',
     params: { token }
   })

@@ -1,12 +1,13 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import Cookies from 'js-cookie'
 
 const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
   }
 }
 
@@ -23,8 +24,8 @@ const mutations = {
     state.name = name
   },
   SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar
-  }
+    state.avatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
+  }//https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif
 }
 
 const actions = {
@@ -48,16 +49,21 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-
+        console.log('store->modules->user.js->getInfo:'+data.rules)
         if (!data) {
           return reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
+        const {id,name,avatar,rules}=data
 
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         resolve(data)
+
+        Cookies.set('user_id', id)
+        Cookies.set('name', name)
+        Cookies.set('rules', rules)
+
       }).catch(error => {
         reject(error)
       })
