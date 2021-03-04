@@ -28,14 +28,13 @@
             <el-button @click="delBatch(sels)" :disabled="this.sels.length === 0">批量删除</el-button>
             <el-button @click="saveUser">添加</el-button>
             <!-- 新增编辑弹框子组件 -->
-            <Add :addVisible="addVisible" @changeShow="showAdd"
-                 @refreshList="queryList" ref="addRef"></Add>
+            <Add :addVisible="addVisible" @changeShow="showAdd" @refreshList="queryList" ref="addRef"></Add>
         </el-row>
 
         <el-table border style="width: 100%" :data="tableData" max-height="470px" min-height="470px"
                   tooltip-effect="dark" @selection-change="selsChange"
                   :cell-style="tableRowStyleName" highlight-current-row
-                  show-summary ><!--:summary-method="summary" -->
+                  show-summary @row-click="handle" ref="table"><!--:summary-method="summary" -->
             <el-table-column fixed type="selection" width="55"></el-table-column>
             <el-table-column prop="formatId" label="编号" width="100"></el-table-column>
             <el-table-column prop="commodity.name" label="商品名称" width="100"></el-table-column>
@@ -143,6 +142,10 @@
             //查询总成本
             getSumCost:function(row){
                 return row.amount*row.cost_price+row.other_cost;
+            },
+            // 任意点击某处选中此行
+            handle(row, column, event) {
+              this.$refs.table.toggleRowSelection(row);
             },
             // 按钮点击事件 显示新增编辑弹窗组件
             saveUser(){

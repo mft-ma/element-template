@@ -91,7 +91,7 @@
             onSubmit:function () {
                 this.form.bill=this.form.bill?1:0
                 axios({
-                    url: 'http://localhost:7001/addInventory',
+                    url: 'http://localhost:7001/addInventoryOrder',
                     method: 'post',
                     data:this.form
                 }).then(res => {
