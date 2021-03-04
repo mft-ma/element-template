@@ -7,7 +7,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img :src="avatarImg" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -46,6 +46,11 @@ export default {
       'sidebar',
       'avatar'
     ])
+  },
+  data(){
+    return{
+      avatarImg:'https://guli-entrepot.oss-cn-beijing.aliyuncs.com/avatar/2021/02/23/21af3718-e4e1-4297-beb4-b5d58de2a489.png'
+    }
   },
   methods: {
     toggleSideBar() {

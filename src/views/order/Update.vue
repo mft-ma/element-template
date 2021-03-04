@@ -157,7 +157,7 @@
           console.log(error);
         })
         this.orderId=this.updValue
-        //查询user info
+        //查询order info
         axios({
           url:'http://localhost:7001/queryOrderById',
           params:{

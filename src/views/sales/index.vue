@@ -25,7 +25,8 @@
 
         <el-table border style="width: 100%" :data="tableData" max-height="470px"
                   tooltip-effect="dark" @selection-change="selsChange"
-                  :cell-style="tableRowStyleName" highlight-current-row>
+                  :cell-style="tableRowStyleName" highlight-current-row
+                  @row-click="handle" ref="table">
             <el-table-column fixed type="selection" width="55"></el-table-column>
             <el-table-column prop="formatId" label="编号" width="100"></el-table-column>
             <el-table-column prop="user_id" label="业务员id" width="90"></el-table-column>
@@ -119,6 +120,10 @@
                     return 'background-color: #f8a9a0';
                 }
             },
+            // 任意点击某处选中此行
+            handle(row, column, event) {
+              this.$refs.table.toggleRowSelection(row);
+            },
             // 按钮点击事件 显示新增编辑弹窗组件
             saveUser(){
                 this.addVisible = true
@@ -177,7 +182,7 @@
                         console.log(error)
                     })
                 }else{
-                    this.$message.info("已出库了哦")
+                    this.$message.info("已收到货了哦")
                 }
             },
             //query按钮
