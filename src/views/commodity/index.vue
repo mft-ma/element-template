@@ -85,10 +85,13 @@
             action="http://localhost:7001/upload/"
             multiple
             :limit="3"
+            v-show="scope.row.imgStatus == 1 ? false : true"
+            :data="{id:scope.row.sid}"
+            :on-success="success"
             :on-exceed="handleExceed"
           >
-            <el-button v-show="scope.row.imgStatus == 0 ? true : false" size="small" type="primary">
-              {{ scope.row.imgStatus==0?'上传图片':'已上传' }}
+            <el-button v-show="scope.row.imgStatus == 1 ? false : true" size="small" type="primary">
+              {{ scope.row.imgStatus==1?'已上传':'上传图片' }}
             </el-button>
           </el-upload>
           <el-button
@@ -425,9 +428,9 @@ export default {
       console.log('this.showImagePath===' + this.showImagePath)
     },
     // 上传成功后的勾子函数
-    success(row) {
+    success() {
       // this.$message('上传成功')
-      // this.initTable()
+      this.initTable()
     },
     // 上传图片按钮点击事件
     // uploadImage(row) {

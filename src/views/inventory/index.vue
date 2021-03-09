@@ -35,8 +35,8 @@
             <el-table-column prop="number" label="库存编号" width="150"></el-table-column>
             <el-table-column prop="name" label="商品名称" width="150"></el-table-column>
             <el-table-column prop="cas" label="cas号" width="100"></el-table-column>
-            <el-table-column prop="amount" label="库存数量" width="150"></el-table-column>
-            <el-table-column prop="remark" label="备注" width="250"></el-table-column>
+            <el-table-column prop="amount" label="库存数量" width="100"></el-table-column>
+            <el-table-column prop="remark" label="备注" width="300"></el-table-column>
             <el-table-column fixed="right" label="操作" width="350">
                 <template slot-scope="scope">
                     <el-button size="mini" type="primary" plain
