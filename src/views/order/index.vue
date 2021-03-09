@@ -252,6 +252,8 @@
                 this.commodityName='';
                 this.startTime='';
                 this.endTime='';
+                //刷新table
+                this.refresh();
             },
             //pageSize改变触发事件
             handleSizeChange:function(val) {

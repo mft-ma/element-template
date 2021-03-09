@@ -49,7 +49,7 @@
       <el-table-column
         prop="name"
         label="产品名称"
-        width="300"
+        width="120"
       />
       <el-table-column
         prop="cas"
@@ -59,7 +59,7 @@
       <el-table-column
         prop="priceInfo"
         label="报价信息"
-        width="280"
+        width="120"
       />
       <el-table-column
         prop="user.username"
@@ -93,11 +93,10 @@
             <el-button v-show="scope.row.imgStatus == 1 ? false : true" size="small" type="primary">
               {{ scope.row.imgStatus==1?'已上传':'上传图片' }}
             </el-button>
-          </el-upload>
+          </el-upload>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <el-button
             v-show="scope.row.imgStatus == 1 ? true : false"
             size="small"
-            class="inline-block"
             type="primary"
             @click="handleShowImage(scope.row)"
           >已上传

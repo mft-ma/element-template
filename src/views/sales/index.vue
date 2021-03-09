@@ -175,6 +175,7 @@
                         method:'get'
                     }).then(res=>{
                         if(res.data){
+                          console.log(res.data)
                             this.$message.info("货已收到了哦")
                             this.refresh();
                         }
@@ -209,6 +210,8 @@
             reset:function () {
                 this.commodityName='';
                 this.tracking_number='';
+                //刷新表格
+                this.refresh();
             },
             //pageSize改变触发事件
             handleSizeChange:function(val) {
