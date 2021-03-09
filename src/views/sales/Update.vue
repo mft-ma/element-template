@@ -1,15 +1,21 @@
 <template>
-  <el-dialog title="修改商品" :visible.sync="showDialog" append-to-body
-             width="50%" @close="handleClose" @open="handleOpen">
+  <el-dialog
+    title="修改商品"
+    :visible.sync="showDialog"
+    append-to-body
+    width="50%"
+    @close="handleClose"
+    @open="handleOpen"
+  >
     <el-form :model="form">
       <el-form-item label="ID" hidden :label-width="formLabelWidth">
-        <el-input v-model="form.did"></el-input>
+        <el-input v-model="form.did" />
       </el-form-item>
       <el-form-item label="物流公司名称" :label-width="formLabelWidth">
-        <el-input v-model="form.tracking_name"></el-input>
+        <el-input v-model="form.tracking_name" />
       </el-form-item>
       <el-form-item label="物流编号" :label-width="formLabelWidth">
-        <el-input v-model="form.tracking_number"></el-input>
+        <el-input v-model="form.tracking_number" />
       </el-form-item>
     </el-form>
 
@@ -23,91 +29,90 @@
 </template>
 
 <script>
-  import axios from "axios";
+import axios from 'axios'
 
-
-  export default {
-    // 接受父组件传递的值
-    props: {
-      updVisible: {
-        type: Boolean,
-        default: false
-      },
-      updValue: {
-        type: Number,
-        default: function () {
-          return 0
-        }
-      }
+export default {
+  // 接受父组件传递的值
+  props: {
+    updVisible: {
+      type: Boolean,
+      default: false
     },
-    data() {
-      return {
-        // 控制弹出框显示隐藏
-        showDialog: false,
-        formLabelWidth: '120px',
-        form: {
-          did:'',               //主键
-          tracking_number:'',   //物流编号
-          tracking_name:'',     //物流公司名称
+    updValue: {
+      type: Number,
+      default: function() {
+        return 0
+      }
+    }
+  },
+  data() {
+    return {
+      // 控制弹出框显示隐藏
+      showDialog: false,
+      formLabelWidth: '120px',
+      form: {
+        did: '', // 主键
+        tracking_number: '', // 物流编号
+        tracking_name: '' // 物流公司名称
+      },
+      salesId: 0,
+      commodityName: '',
+      orderAmount: ''
+    }
+  },
+  watch: {
+    // 监听 addOrUpdateVisible 改变
+    updVisible(oldVal, newVal) {
+      this.showDialog = this.updVisible
+    }
+  },
+  methods: {
+    // 弹出框打开后触发
+    handleOpen() {
+      this.salesId = this.updValue
+      // 查询sales info
+      axios({
+        url: 'http://localhost:7001/querySalesByID',
+        params: {
+          did: this.salesId
         },
-        salesId:0,
-        commodityName:'',
-        orderAmount:'',
-      }
+        method: 'get'
+      }).then(res => {
+        this.form = res.data
+      }).catch(function(error) {
+        console.log(error)
+      })
     },
-    methods: {
-      // 弹出框打开后触发
-      handleOpen() {
-        this.salesId=this.updValue
-        //查询sales info
-        axios({
-          url:'http://localhost:7001/querySalesByID',
-          params:{
-            did:this.salesId
-          },
-          method:'get'
-        }).then(res=>{
-          this.form=res.data;
-        }).catch(function (error) {
-          console.log(error);
-        })
-      },
-      // 弹出框关闭后触发
-      handleClose() {
-        // 子组件调用父组件方法，并传递参数
-        this.$emit('changeShow', 'false')
-      },
-      //重置
-      reset: function () {
-        this.form=this.$options.data.call(this).form
-      },
-      //提交按钮
-      onSubmit: function () {
-        axios({
-          url: 'http://localhost:7001/updateSales',
-          method: 'post',
-          data:this.form
-        }).then(res => {
-          console.log(res)
-          if(res.data){
-            this.$message('修改成功');
-            this.showDialog=false;
-            this.$emit('refreshList');
-          }else{
-            this.$message('修改失败');
-          }
-        }).catch(function (error) {
-          console.log(error);
-        })
-      }
+    // 弹出框关闭后触发
+    handleClose() {
+      // 子组件调用父组件方法，并传递参数
+      this.$emit('changeShow', 'false')
     },
-    watch: {
-      // 监听 addOrUpdateVisible 改变
-      updVisible(oldVal, newVal) {
-        this.showDialog = this.updVisible
-      },
+    // 重置
+    reset: function() {
+      this.form = this.$options.data.call(this).form
+    },
+    // 提交按钮
+    onSubmit: function() {
+      axios({
+        url: 'http://localhost:7001/updateSales',
+        method: 'post',
+        data: this.form
+      }).then(res => {
+        console.log(res)
+        if (res.data) {
+          this.$message('修改成功')
+          this.showDialog = false
+          this.$emit('refreshList')
+        } else {
+          this.$message('修改失败')
+        }
+      }).catch(function(error) {
+        console.log(error)
+      })
     }
   }
+}
 </script>
 
 <style scoped>
