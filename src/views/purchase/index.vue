@@ -40,69 +40,69 @@
       <el-table-column
         prop="formatId"
         label="编号"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="user.username"
         label="业务员"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="name"
         label="产品名称"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="cas"
         label="cas号"
-        width="160"
+        width="80"
       />
       <el-table-column
         prop="amount"
         label="数量"
-        width="160"
+        width="80"
       />
       <el-table-column
         prop="price"
         label="单价"
-        width="150"
+        width="100"
       />
       <el-table-column
         prop="priceStatus"
         label="是否含税"
         :formatter="priceStatusFormatter"
-        width="150"
+        width="100"
       />
       <el-table-column
         prop="sumPrice"
         label="总价"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="supplierName"
         label="供应商名称"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="supplierPhone"
         label="供应商电话"
-        width="160"
+        width="120"
       />
       <el-table-column
         prop="trackingNumber"
         label="物流单号"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="createTime"
         label="创建日期"
-        width="160"
+        width="100"
       />
       <el-table-column
         prop="ann"
         :formatter="annFormatter"
         label="发票"
-        width="160"
+        width="100"
       />
       <el-table-column
         fixed="right"

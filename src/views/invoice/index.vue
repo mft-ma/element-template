@@ -30,9 +30,9 @@
             <el-table-column type="index" label="序号" width="100"></el-table-column>
             <el-table-column prop="name" label="商品名称" width="150"></el-table-column>
             <el-table-column prop="cas" label="cas号" width="100"></el-table-column>
-            <el-table-column prop="number" label="数量" width="150"></el-table-column>
+            <el-table-column prop="number" label="数量" width="100"></el-table-column>
             <el-table-column prop="price" label="价格" width="150"></el-table-column>
-            <el-table-column prop="createtime" label="创建时间" width="250"></el-table-column>
+            <el-table-column prop="createtime" label="创建时间" width="150"></el-table-column>
             <el-table-column prop="unit" label="单位" width="150"></el-table-column>
             <el-table-column fixed="right" label="操作" width="350">
                 <template slot-scope="scope">

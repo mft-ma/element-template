@@ -216,6 +216,7 @@ export default {
     onSubmit: function() {
       this.form.user_id = Cookies.get('user_id')
       this.form.bill = this.form.bill ? 1 : 0
+      console.log("add order 库存id==="+this.form.invoice_id)
       axios({
         url: 'http://localhost:7001/addOrder',
         method: 'post',

@@ -78,7 +78,7 @@
           if(res.data){
             this.$message('添加成功');
             this.showDialog=false;
-            // this.$emit('refreshList');
+            this.$emit('refreshList');
           }else{
             this.$message('添加失败');
           }

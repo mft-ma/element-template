@@ -40,7 +40,7 @@
       <el-table-column
         prop="user.username"
         label="业务员"
-        width="160"
+        width="150"
       />
       <el-table-column
         prop="name"
