@@ -85,6 +85,7 @@
             action="http://localhost:7001/upload/"
             multiple
             :limit="3"
+            :on-success="success"
             :data="{id:scope.row.sid}"
             v-show="scope.row.imgStatus == 1 ? false : true"
             :on-exceed="handleExceed"
@@ -422,9 +423,9 @@
         console.log('this.showImagePath===' + this.showImagePath)
       },
       // 上传成功后的勾子函数
-      success(row) {
+      success() {
         // this.$message('上传成功')
-        // this.initTable()
+        this.initTable()
       },
       // 上传图片按钮点击事件
       // uploadImage(row) {

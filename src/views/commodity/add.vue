@@ -140,8 +140,8 @@ export default {
         }
       })
         .then((response) => {
-          this.addForm.supplierId = response.data.gid
-          // this.supplier = response.data
+          // this.addForm.supplierId = response.data.gid
+          this.supplier = response.data
         })
         .catch(function(error) {
           console.log(error)

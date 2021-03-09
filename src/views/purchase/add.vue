@@ -155,7 +155,7 @@ export default {
         .then((response) => {
           this.addForm.supplierName = response.data.name
           this.addForm.supplierPhone = response.data.phone
-          // this.supplier = response.data
+          this.supplier = response.data
         })
         .catch(function(error) {
           console.log(error)
